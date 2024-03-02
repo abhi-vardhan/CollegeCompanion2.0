@@ -71,6 +71,9 @@ import androidx.compose.ui.unit.*
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.auth.ktx.auth
 import kotlinx.coroutines.launch
 
 
@@ -82,6 +85,7 @@ fun HomeScreen(
     welcomeViewModel: WelcomeViewModel = hiltViewModel(),name:String?
 
 ) {
+    var user by remember { mutableStateOf(Firebase.auth.currentUser) }
     val homefont = FontFamily(
         Font(R.font.home))
     val list = listOf(
@@ -157,10 +161,10 @@ Row(modifier = Modifier.fillMaxWidth()){
 
 
         Text(
-            text = " Hello Bhavanite,",
+            text = " Hello,${user!!.displayName}",
             modifier = Modifier.padding(top = 10.dp),
             color = Color.White,
-            fontSize = 25.sp,
+            fontSize = 20.sp,
             fontFamily = homefont
         )
     }
@@ -175,7 +179,8 @@ Row(modifier = Modifier.fillMaxWidth()){
                 // .fillMaxWidth()
                 .height(35.dp)
                 .width(60.dp)
-                .clickable { navController.navigate(Screen.faq.route) }
+                .clickable {  Firebase.auth.signOut()
+                    navController.navigate(Screen.RegistrationScreen.route) }
 
 
         )
