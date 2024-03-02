@@ -1,5 +1,6 @@
 package com.bhavansvivekananda.onboardingcompose.screen
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -65,6 +66,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
@@ -75,11 +77,16 @@ import kotlinx.coroutines.tasks.await
 
 @Composable
 fun RegistrationScreen(navController: NavController, splashViewModel: SplashViewModel) {
+    var signedOut by remember { mutableStateOf(false) }
     var buttonSize by remember { mutableStateOf(50.dp) }
     var rotationAngle by remember { mutableStateOf(360f) }
     val context = LocalContext.current
     val token = stringResource(id = R.string.client_id)
-
+    val gso = GoogleSignInOptions
+        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken(token)
+        .requestEmail()
+        .build()
     var loading by remember { mutableStateOf(false) }
 
     val launcher = rememberFirebaseAuthLauncher(
@@ -92,7 +99,15 @@ fun RegistrationScreen(navController: NavController, splashViewModel: SplashView
             // Handle error if needed
         }
     )
-
+    val switchAccountLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // Handle result of switching accounts here
+        if (result.resultCode == Activity.RESULT_OK) {
+            // Perform sign-in again or handle the flow as needed
+            launcher.launch(GoogleSignIn.getClient(context, gso).signInIntent)
+        }
+    }
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Bottom,
@@ -126,9 +141,7 @@ fun RegistrationScreen(navController: NavController, splashViewModel: SplashView
             shape = CircleShape,
             modifier = Modifier
                 .height(50.dp)
-                .rotate(rotationAngle)
-
-                ,
+                .rotate(rotationAngle),
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.Black
             )
@@ -178,11 +191,12 @@ fun RegistrationScreen(navController: NavController, splashViewModel: SplashView
                         delay(100)
                     }
                 }
-                }
-
             }
+
         }
+
     }
+}
 
 
 @Composable
@@ -238,3 +252,4 @@ fun rememberFirebaseAuthLauncher(
         }
     }
 }
+

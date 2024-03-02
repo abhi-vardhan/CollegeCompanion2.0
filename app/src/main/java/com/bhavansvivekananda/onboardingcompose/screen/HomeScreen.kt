@@ -72,6 +72,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import kotlinx.coroutines.launch
@@ -179,8 +180,16 @@ Row(modifier = Modifier.fillMaxWidth()){
                 // .fillMaxWidth()
                 .height(35.dp)
                 .width(60.dp)
-                .clickable {  Firebase.auth.signOut()
-                    navController.navigate(Screen.RegistrationScreen.route) }
+                .clickable {
+                    // Sign out logic...
+                    FirebaseAuth.getInstance().signOut()
+                    // Navigate back to the registration screen
+                    navController.navigate(Screen.RegistrationScreen.route) {
+                        popUpTo(Screen.RegistrationScreen.route) {
+                            inclusive = true
+                        }
+                    }
+                }
 
 
         )
@@ -272,7 +281,11 @@ Row(modifier = Modifier.fillMaxWidth()){
 
                 GradientB1(
                     gradient = gradient,
-                    onClick = { navController.navigate(Screen.placement.route) },
+                    onClick = {
+                        navController.navigate(Screen.placement.route) {
+
+                        }
+                    },
                     text = "Placements",
                     img = painterResource(id = R.drawable.placement)
                 )
