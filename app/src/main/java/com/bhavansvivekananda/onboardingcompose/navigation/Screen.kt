@@ -89,6 +89,8 @@ object faq:Screen(route = "faq")
     object phdma :Screen(route = "phdma")
     object Navscreen :Screen(route = "nav1")
 
+    object spnew :Screen(route = "spnew")
+
 
 }
 sealed class NavigationItem(val route: String, val label: String,val Icon: ImageVector) {

@@ -209,6 +209,11 @@ fun NavGraphBuilder.SetupNavGraph(
             TabLayout(navController = navController)
         }
 
+        composable(route = Screen.spnew.route)
+        {
+            NewSplash(navController = navController)
+        }
+
 
         }
 

@@ -313,7 +313,7 @@ Row(modifier = Modifier.fillMaxWidth()){
                 )
                 GradientB1(
                     gradient = gradient,
-                    onClick = { navController.navigate(Screen.antirag.route) },
+                    onClick = { navController.navigate(Screen.faq.route) },
                     text = "Anti-Ragging",
                     img = painterResource(id = R.drawable.antiragfinal)
                 )
@@ -335,7 +335,7 @@ Row(modifier = Modifier.fillMaxWidth()){
                 )
                 GradientB1(
                     gradient = gradient,
-                    onClick = { navController.navigate(Screen.devcon2.route) },
+                    onClick = { navController.navigate(Screen.spnew.route) },
                     text = "FeedBack",
                     img = painterResource(id = R.drawable.feedbackfinal)
                 )
