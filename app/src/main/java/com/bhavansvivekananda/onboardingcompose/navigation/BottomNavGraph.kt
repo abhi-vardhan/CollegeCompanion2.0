@@ -237,6 +237,10 @@ fun BottomNavGraph(
             TabLayout(navController = navController)
         }
 
+        composable(route = Screen.spnew.route)
+        {
+            NewSplash(navController = navController)
+        }
 
 
     }
