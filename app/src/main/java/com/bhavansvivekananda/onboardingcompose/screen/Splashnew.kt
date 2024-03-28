@@ -65,9 +65,9 @@ fun NewSplash(
             1f,
             animationSpec = tween(2500)
         )*/
-        delay(5500)
+        delay(4800)
         navController.popBackStack()
-        navController.navigate(Screen.faq.route)
+        navController.navigate(Screen.RegistrationScreen.route)
 /*
         if (onBoardingIsFinished(context = context)) {
             navController.popBackStack()

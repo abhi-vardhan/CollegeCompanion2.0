@@ -7,7 +7,7 @@
     </style>
 
     <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_overlay__12__removebg_preview</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/newcclogo1</item>
 
 
         <item name="windowSplashScreenBackground">@color/white</item>
