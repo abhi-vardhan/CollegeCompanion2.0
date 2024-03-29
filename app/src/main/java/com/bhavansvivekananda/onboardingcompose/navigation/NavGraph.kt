@@ -13,6 +13,7 @@ import androidx.navigation.navigation
 import com.bhavansvivekananda.onboardingcompose.screen.*
 import com.bhavansvivekananda.onboardingcompose.screen.homescreen.*
 import com.bhavansvivekananda.onboardingcompose.screen.quespaper.*
+import com.bhavansvivekananda.onboardingcompose.screen.todo.ui.TodoActivity
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -35,6 +36,12 @@ fun NavGraphBuilder.SetupNavGraph(
         }
         composable(route = Screen.Papers.route) {
             Papers(navController = navController)
+        }
+        composable(route = Screen.Todo.route) {
+            Todo(navController = navController)
+        }
+        composable(route = Screen.Tbar.route) {
+            TodoActivity()
         }
 
 

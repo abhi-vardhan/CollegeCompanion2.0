@@ -17,6 +17,7 @@ sealed class Screen(val route: String,) {
     //object Home : Screen(route = "home_screen")
     object Papers :Screen(route = "papers")
     object Question1 : Screen(route = "Question1")
+    object Todo : Screen(route = "Todo")
 
     object hm2 : Screen(route = "ph1")
     //object Navscreen :Screen(route = "nav1")
@@ -90,6 +91,8 @@ object faq:Screen(route = "faq")
     object Navscreen :Screen(route = "nav1")
 
     object spnew :Screen(route = "spnew")
+
+    object Tbar :Screen(route = "Tbar")
 
 
 }

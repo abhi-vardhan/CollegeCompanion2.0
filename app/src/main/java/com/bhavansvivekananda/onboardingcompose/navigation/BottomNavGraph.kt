@@ -32,6 +32,9 @@ fun BottomNavGraph(
         composable(NavigationItem.academics.route) {
             act(navController = navController)
         }
+        composable(route = Screen.Todo.route) {
+            Todo(navController = navController)
+        }
 
         composable(NavigationItem.Activities.route) {
             exam(navController = navController)

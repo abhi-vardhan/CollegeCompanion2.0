@@ -162,7 +162,7 @@ Row(modifier = Modifier.fillMaxWidth()){
 
 
         Text(
-            text = " Hello,${user!!.displayName}",
+            text = " ${user!!.displayName}",
             modifier = Modifier.padding(top = 10.dp),
             color = Color.White,
             fontSize = 20.sp,

@@ -92,7 +92,7 @@ fun RegistrationScreen(navController: NavController, splashViewModel: SplashView
     val launcher = rememberFirebaseAuthLauncher(
         onAuthComplete = { result ->
             loading = false
-            navController.navigate(Screen.HomeScreen.route)
+            navController.navigate(Screen.faq.route)
         },
         onAuthError = {
             loading = false
