@@ -3,6 +3,7 @@
 package com.bhavansvivekananda.onboardingcompose.navigation
 
 
+import act
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
@@ -35,13 +36,17 @@ fun NavGraphBuilder.SetupNavGraph(
             HomeScreen(navController = navController, name = name)
         }
         composable(route = Screen.Papers.route) {
-            Papers(navController = navController)
+            exam(navController = navController)
         }
         composable(route = Screen.Todo.route) {
             Todo(navController = navController)
         }
         composable(route = Screen.Tbar.route) {
             TodoActivity()
+        }
+
+        composable(route = Screen.acad1.route) {
+            act(navController = navController)
         }
 
 
@@ -177,11 +182,11 @@ fun NavGraphBuilder.SetupNavGraph(
         }
         composable(route = Screen.result.route)
         {
-            result(navController=navController, url ="http://www.bvcexams.com/Examination%20Results.html")
+            result(navController=navController, url ="https://www.bvcexams.in/Examination%20Results.html")
         }
         composable(route = Screen.notification.route)
         {
-            notification(navController=navController, url ="http://www.bvcexams.com/Examination%20Notifications.html")
+            notification(navController=navController, url ="https://www.bvcexams.in/Examination%20Notifications.html")
         }
         composable(route = Screen.placement.route)
         {
@@ -190,7 +195,7 @@ fun NavGraphBuilder.SetupNavGraph(
 
         composable(route = Screen.almanac.route)
         {
-            almanac(navController=navController, url ="https://www.bhavansvc.ac.in/almanac.html")
+            almanac(navController=navController, url ="https://www.bvcexams.in/Examination%20Almanac.html")
         }
         composable(route = Screen.syllabi.route)
         {
@@ -219,6 +224,21 @@ fun NavGraphBuilder.SetupNavGraph(
         composable(route = Screen.spnew.route)
         {
             NewSplash(navController = navController)
+        }
+
+        composable(route = Screen.spnew.route)
+        {
+            TodoActivity()
+        }
+
+        composable(route = Screen.Pdfscr.route)
+        {
+            Pdfscr(navController=navController, url ="https://shelar1423.github.io/pdfff/")
+        }
+
+        composable(route = Screen.feedback.route)
+        {
+            feedback(navController=navController, url ="https://docs.google.com/forms/d/e/1FAIpQLSczQKr1wN2bkvTHM8Nex2FYd36bvAga7b2QMoFkyQ5MIV_W3w/viewform?usp=sf_link")
         }
 
 

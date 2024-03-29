@@ -46,8 +46,7 @@ fun navfinal(navController: NavHostController,
         .fillMaxWidth()
         .fillMaxHeight()
         .padding(2.dp)){
-
-        Spacer(modifier = Modifier.height(50.dp))
+        /*
         Image(
             painter = painterResource(id = R.drawable.navigationhead1), contentDescription = null,
             modifier = Modifier
@@ -55,7 +54,7 @@ fun navfinal(navController: NavHostController,
                 .fillMaxWidth()
                 .height(120.dp)
 
-        )
+        )*/
         DisplayJCSpinner()
     }
 

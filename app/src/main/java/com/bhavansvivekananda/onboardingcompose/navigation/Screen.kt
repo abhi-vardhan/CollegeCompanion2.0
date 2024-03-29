@@ -93,6 +93,8 @@ object faq:Screen(route = "faq")
     object spnew :Screen(route = "spnew")
 
     object Tbar :Screen(route = "Tbar")
+    object Pdfscr :Screen(route = "Pdfscr")
+    object acad1 :Screen(route = "acad1")
 
 
 }

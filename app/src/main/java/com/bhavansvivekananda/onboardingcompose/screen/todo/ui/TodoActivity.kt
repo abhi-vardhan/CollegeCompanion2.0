@@ -30,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavHostController
 import com.bhavansvivekananda.onboardingcompose.screen.todo.Todo
+import com.bhavansvivekananda.onboardingcompose.ui.theme.OnBoardingComposeTheme
 import com.bhavansvivekananda.onboardingcompose.viewmodel.WelcomeViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,18 +44,17 @@ class TodoActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-             AddToolbar()
-            /* ComposeYtTheme {
+            OnBoardingComposeTheme {
                  Surface(color = MaterialTheme.colors.background) {
-                     AddToolbar()
+                    AddToolbar()
                  }
-             }*/
+             }
         }
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
-    fun AddToolbar(   ) {
+    fun AddToolbar( ) {
         Scaffold(
             topBar = {
                 TopAppBar(

@@ -1,5 +1,6 @@
 package com.bhavansvivekananda.onboardingcompose.screen
 
+import android.webkit.WebView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -34,17 +35,31 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.bhavansvivekananda.onboardingcompose.R
+import com.bhavansvivekananda.onboardingcompose.navigation.NavigationItem
 import com.bhavansvivekananda.onboardingcompose.navigation.Screen
 import com.bhavansvivekananda.onboardingcompose.viewmodel.WelcomeViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
+import android.os.Environment
+import android.view.ViewGroup
+
+import android.webkit.WebViewClient
+
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.hilt.navigation.compose.hiltViewModel
+
+
 @Composable
 fun Newhome(navController: NavHostController,
-            welcomeViewModel: WelcomeViewModel = hiltViewModel()
+            welcomeViewModel: WelcomeViewModel = hiltViewModel(),webUrl: String
 ) {
 
 Box {
@@ -111,11 +126,11 @@ Box {
 
             }
 
-            Image(painter = painterResource(id = R.drawable.github),
+            Image(painter = painterResource(id = R.drawable.newuserlogo),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(100.dp)
-                    .height(100.dp)
+                    .width(80.dp)
+                    .height(80.dp)
                     .clickable { }
                     .padding(end = 20.dp)
             )
@@ -148,7 +163,7 @@ Box {
                     Modifier.padding(top = 0.dp, bottom = 0.dp)
                         .height(75.dp)
                         .clickable {
-                            navController.navigate(Screen.Tbar.route)
+                            navController.navigate(Screen.acad1.route)
                         }
                         .clip(
                             RoundedCornerShape(20.dp)
@@ -251,6 +266,19 @@ Box {
             )
     )
     {
+        AndroidView(
+        factory = { context ->
+            WebView(context).apply {
+                settings.javaScriptEnabled = true
+                webViewClient = WebViewClient()
+                loadUrl(webUrl)
+                settings.javaScriptEnabled = true
+                settings.loadWithOverviewMode = true;
+                settings.useWideViewPort = true;
+
+            }
+        }
+    )
 
     }
 
@@ -321,7 +349,7 @@ Box {
                     .height(90.dp)
                     .width(90.dp)
                     .clickable {
-                        navController.navigate(Screen.feedbackmain.route)
+                        navController.navigate(Screen.feedback.route)
                     }
                     .clip(RoundedCornerShape(20.dp))
             )

@@ -47,8 +47,11 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
@@ -66,6 +69,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 
+
+
 @OptIn(ExperimentalMaterialApi::class)
 val BottomSheetScaffoldState.isExpanded: Boolean
     get() = bottomSheetState.isExpanded
@@ -79,11 +84,12 @@ fun FAQScreen(navController: NavHostController,
               welcomeViewModel: WelcomeViewModel = hiltViewModel()
 ){
 
-
+    val homefont = FontFamily(
+        Font(R.font.home))
     var user by remember { mutableStateOf(Firebase.auth.currentUser) }
     var bottomSheetState by remember { mutableStateOf(BottomSheetState(BottomSheetValue.Collapsed)) }
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
-
+/*
     val swipeableState = rememberSwipeableState(0)
 
     val anchors = mapOf(0f to 0, -300f to 1) // Adjust -300f according to the width of your screen
@@ -102,7 +108,7 @@ fun FAQScreen(navController: NavHostController,
                 thresholds = { _, _ -> FractionalThreshold(0.5f) },
                 resistance = null
             )
-    ) {
+    ) {*/
 
     BottomSheetScaffold(
       /*  scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState),
@@ -115,7 +121,7 @@ fun FAQScreen(navController: NavHostController,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(320.dp)
-                    .background(Color(0xFFE6E6FA), shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                    .background(Color(0xFFFFFFFF), shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
                 contentAlignment = Alignment.Center
             ) { 
                Column(modifier = Modifier.fillMaxSize()) {
@@ -128,11 +134,11 @@ fun FAQScreen(navController: NavHostController,
                        horizontalArrangement = Arrangement.SpaceAround,
                        verticalAlignment = Alignment.CenterVertically
                    ) {
-                       Text(text = "━━━━",
-                           fontSize = 33.sp,
+                       Text(text = "━━━━━━━━",
+                           fontSize = 20.sp,
                            fontWeight = FontWeight.Bold,
                            modifier = Modifier.padding(top = 0.dp),
-                           color = Color(0xFF9400D3)
+                           color = Color(0xFF2A3942)
                        )
 
                    }
@@ -145,7 +151,7 @@ fun FAQScreen(navController: NavHostController,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.newnav1),
+                        painter = painterResource(id = R.drawable.newnav2),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
@@ -159,15 +165,16 @@ fun FAQScreen(navController: NavHostController,
                                 )
                     )
                     Text(text = "Navigation",
-                        fontSize = 30.sp,
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
+                        fontFamily = homefont,
                         letterSpacing = 2.5.sp,
                         modifier = Modifier.padding(top = 0.dp, start = 20.dp)
                             .weight(0.8f)
                             .clickable {
                                 navController.navigate(Screen.navfinal.route)
                             },
-                        color = Color(0xFF9400D3)
+                        color = Color(0xFF2A3942)
                     )
 
 
@@ -182,23 +189,31 @@ fun FAQScreen(navController: NavHostController,
                        verticalAlignment = Alignment.CenterVertically
                    ) {
                        Image(
-                           painter = painterResource(id = R.drawable.pdfcon),
+                           painter = painterResource(id = R.drawable.pdfcon2),
                            contentDescription = null,
                            modifier = Modifier
                                .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
                                .height(40.dp)
                                .width(40.dp)
                                .weight(0.2f)
+                               .clickable {
+                                   navController.navigate(Screen.Pdfscr.route)
+                               }
                                .clip(RoundedCornerShape(50.dp)
                                )
                        )
+                       val handler = LocalUriHandler.current
                        Text(text = "PDF Converter",
-                           fontSize = 30.sp,
+                           fontSize = 20.sp,
                            fontWeight = FontWeight.Bold,
+                           fontFamily = homefont,
                            letterSpacing = 2.5.sp,
                            modifier = Modifier.padding(top = 0.dp, start = 20.dp)
+                               .clickable {
+                                   handler.openUri("https://shelar1423.github.io/pdfff/")
+                               }
                                .weight(0.8f),
-                           color = Color(0xFF9400D3)
+                           color = Color(0xFF2A3942)
                        )
 
 
@@ -212,7 +227,7 @@ fun FAQScreen(navController: NavHostController,
                        verticalAlignment = Alignment.CenterVertically
                    ) {
                        Image(
-                           painter = painterResource(id = R.drawable.feepaynew),
+                           painter = painterResource(id = R.drawable.feenew2),
                            contentDescription = null,
                            modifier = Modifier
                                .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
@@ -226,15 +241,16 @@ fun FAQScreen(navController: NavHostController,
                                )
                        )
                        Text(text = "Fee Payment",
-                           fontSize = 30.sp,
+                           fontSize = 20.sp,
                            fontWeight = FontWeight.Bold,
+                           fontFamily = homefont,
                            letterSpacing = 2.5.sp,
                            modifier = Modifier.padding(top = 0.dp, start = 20.dp)
                                .weight(0.8f)
                                .clickable {
                                    navController.navigate(Screen.payment.route)
                                },
-                           color = Color(0xFF9400D3)
+                           color = Color(0xFF2A3942)
                        )
 
 
@@ -248,7 +264,7 @@ fun FAQScreen(navController: NavHostController,
                        verticalAlignment = Alignment.CenterVertically
                    ) {
                        Image(
-                           painter = painterResource(id = R.drawable.logoutnew),
+                           painter = painterResource(id = R.drawable.logoutnew2),
                            contentDescription = null,
                            modifier = Modifier
                                .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
@@ -259,9 +275,10 @@ fun FAQScreen(navController: NavHostController,
                                )
                        )
                        Text(text = "LogOut",
-                           fontSize = 30.sp,
+                           fontSize = 20.sp,
                            fontWeight = FontWeight.Bold,
                            letterSpacing = 2.5.sp,
+                           fontFamily = homefont,
                            modifier = Modifier.padding(top = 0.dp, start = 20.dp)
                                .weight(0.8f)
                                .clickable {
@@ -274,7 +291,7 @@ fun FAQScreen(navController: NavHostController,
                                        }
                                    }
                                },
-                           color = Color(0xFF9400D3)
+                           color = Color(0xFF2A3942)
                        )
 
 
@@ -295,12 +312,13 @@ fun FAQScreen(navController: NavHostController,
      /*   FullScreenCard(bottomSheetExpanded = bottomSheetScaffoldState.isExpanded)*/
 
 
-        Newhome(navController=navController)
+        Newhome(navController=navController,webUrl = "https://shelar1423.github.io/to-do-listAPP/")
 
 
 
     }
 }
+    /*
 LaunchedEffect(swipeableState.isAnimationRunning) {
     if (!swipeableState.isAnimationRunning) {
         if (swipeableState.currentValue == 1) {
@@ -308,7 +326,7 @@ LaunchedEffect(swipeableState.isAnimationRunning) {
         }
     }
 }
-}
+}*/
 
 
 @Composable
