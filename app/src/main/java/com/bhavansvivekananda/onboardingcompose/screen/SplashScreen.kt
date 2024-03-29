@@ -53,7 +53,7 @@ fun SplashScreen(
         }
     } else {
         LaunchedEffect(key1 = true) {
-            delay(5500)
+            delay(5000)
             navController.navigate(Screen.RegistrationScreen.route)
         }
     }
@@ -67,7 +67,7 @@ fun SplashScreen(
             1f,
             animationSpec = tween(2500)
         )*/
-        delay(5500)
+        delay(5000)
         navController.popBackStack()
         navController.navigate(Screen.RegistrationScreen.route)
         /*

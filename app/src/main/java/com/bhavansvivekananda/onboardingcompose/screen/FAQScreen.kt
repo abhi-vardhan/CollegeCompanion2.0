@@ -1,9 +1,12 @@
 package com.bhavansvivekananda.onboardingcompose.screen
 
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -24,9 +28,13 @@ import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.Text
 import androidx.compose.material.rememberBottomSheetScaffoldState
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,16 +46,20 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.bhavansvivekananda.onboardingcompose.R
 import com.bhavansvivekananda.onboardingcompose.navigation.Screen
+import com.bhavansvivekananda.onboardingcompose.screen.todo.ui.TodoActivity
 import com.bhavansvivekananda.onboardingcompose.viewmodel.WelcomeViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -72,6 +84,26 @@ fun FAQScreen(navController: NavHostController,
     var bottomSheetState by remember { mutableStateOf(BottomSheetState(BottomSheetValue.Collapsed)) }
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
 
+    val swipeableState = rememberSwipeableState(0)
+
+    val anchors = mapOf(0f to 0, -300f to 1) // Adjust -300f according to the width of your screen
+
+    val offsetX = swipeableState.offset.value.toInt()
+
+    // Apply swipeable modifier to the content
+    Box(
+        modifier = Modifier
+            .offset { IntOffset(offsetX.toInt(), 0) }
+            .swipeable(
+                state = swipeableState,
+                anchors = anchors,
+                orientation = Orientation.Horizontal,
+                enabled = true,
+                thresholds = { _, _ -> FractionalThreshold(0.5f) },
+                resistance = null
+            )
+    ) {
+
     BottomSheetScaffold(
       /*  scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState),
       */
@@ -83,7 +115,7 @@ fun FAQScreen(navController: NavHostController,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(320.dp)
-                    .background(Color(0xFFE6E6FA), shape = RoundedCornerShape(30.dp)),
+                    .background(Color(0xFFE6E6FA), shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
                 contentAlignment = Alignment.Center
             ) { 
                Column(modifier = Modifier.fillMaxSize()) {
@@ -248,47 +280,12 @@ fun FAQScreen(navController: NavHostController,
 
                    }
 
-                // Add more Rows as needed for additional buttons
 
-                // Continue adding rows for all buttons
              }
             }
 
 
-            /*
-                Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
 
-
-
-                    Button(
-                        onClick = {
-                            // Handle button click
-                        },
-                        modifier = Modifier
-                            .size(48.dp)
-                    ) {
-                        Text("1")
-                    }
-
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    Button(
-                        onClick = {
-                            // Handle button click
-                        },
-                        modifier = Modifier
-                            .size(48.dp)
-                    ) {
-                        Text("2")
-                    }
-                }
-            }*/
         }
         ,
         sheetShape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
@@ -302,43 +299,15 @@ fun FAQScreen(navController: NavHostController,
 
 
 
-        /*
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-        ) {
-            Card(
-                shape = RoundedCornerShape(20.dp),
-                elevation = 5.dp,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth().graphicsLayer(),
-            ) {
-                Box(modifier = Modifier.padding(16.dp)) {
-                    Column(
-                        modifier = Modifier.align(Alignment.CenterStart),
-                    ) {
-                        // Credit card details go here
-                        CreditCardDetails(
-                            studentinfo = "STUDENT INFO",
-                            cardNumber = "107221861010",
-                            cardHolderName = "Digvijay Shelar",
-                            batch = "21/24"
-                        )
-                    }
-                    Image(
-                        painter = painterResource(id = R.drawable.digvijaydp),
-                        contentDescription = "Credit Card Icon",
-                        modifier = Modifier
-                            .align(Alignment.CenterEnd)
-                            .size(100.dp, 150.dp)
-                    )
-                }
-            }
-        }
-    }*/
     }
+}
+LaunchedEffect(swipeableState.isAnimationRunning) {
+    if (!swipeableState.isAnimationRunning) {
+        if (swipeableState.currentValue == 1) {
+           navController.navigate(Screen.Tbar.route)
+        }
+    }
+}
 }
 
 

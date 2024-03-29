@@ -4,6 +4,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -107,5 +108,33 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.18.7'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
 
+    def lifecycle_version = "2.3.1"
+    def room_version = "2.5.2"
+
+    //Room
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //moshi
+    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2")
+
+    //kotlin Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+
+    // android ktx
+    implementation 'androidx.activity:activity-ktx:1.5.1'
 
 }

@@ -3,6 +3,7 @@
     package="com.bhavansvivekananda.onboardingcompose">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+
         android:allowBackup="true"
         android:name="com.bhavansvivekananda.onboardingcompose.MyApplication"
         android:icon="@drawable/newlogo"

@@ -101,7 +101,7 @@ Box {
 
                 var user by remember { mutableStateOf(Firebase.auth.currentUser) }
                 Text(
-                    text = "Hello,${user!!.displayName}",
+                    text = "${user!!.displayName}",
                     color = Color.White,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
@@ -148,7 +148,7 @@ Box {
                     Modifier.padding(top = 0.dp, bottom = 0.dp)
                         .height(75.dp)
                         .clickable {
-                            navController.navigate(Screen.academicsScreen.route)
+                            navController.navigate(Screen.Tbar.route)
                         }
                         .clip(
                             RoundedCornerShape(20.dp)
