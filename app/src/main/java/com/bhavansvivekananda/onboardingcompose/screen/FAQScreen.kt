@@ -120,8 +120,11 @@ fun FAQScreen(navController: NavHostController,
            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(320.dp)
-                    .background(Color(0xFFFFFFFF), shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                    .height(290.dp)
+                    .background(
+                        Color(0xFFFFFFFF),
+                        shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
+                    ),
                 contentAlignment = Alignment.Center
             ) { 
                Column(modifier = Modifier.fillMaxSize()) {
@@ -134,156 +137,193 @@ fun FAQScreen(navController: NavHostController,
                        horizontalArrangement = Arrangement.SpaceAround,
                        verticalAlignment = Alignment.CenterVertically
                    ) {
-                       Text(text = "━━━━━━━━",
-                           fontSize = 20.sp,
-                           fontWeight = FontWeight.Bold,
-                           modifier = Modifier.padding(top = 0.dp),
-                           color = Color(0xFF2A3942)
+                       Image(
+                           painter = painterResource(id = R.drawable.btmline),
+                           contentDescription = null,
+                           modifier = Modifier
+                               .padding(top = 0.dp, bottom = 0.dp, start = 30.dp)
+                               .height(40.dp)
+                               .width(120.dp)
+                               .clip(
+                                   RoundedCornerShape(10.dp)
+                               )
                        )
 
                    }
                 Row(
                     modifier = Modifier
-                        .height(60.dp)
+                        .height(150.dp)
                         .width(800.dp)
-                        .padding(10.dp),
+                        .padding(top=20.dp, bottom = 10.dp, start = 10.dp),
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 2.dp, bottom = 12.dp, end = 12.dp)
+                            .height(110.dp)
+                            .width(110.dp)
+                            .shadow(5.dp, shape = RoundedCornerShape(18.dp))
+                            .background(
+                                color = Color.White,
+                                shape = RoundedCornerShape(18.dp)
+                            ),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        val handler = LocalUriHandler.current
+
+                        Image(
+                            painter = painterResource(id = R.drawable.finpdf),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(top = 10.dp, bottom = 1.dp)
+                                .height(60.dp)
+                                .width(60.dp)
+                                .clickable {
+                                    handler.openUri("https://shelar1423.github.io/pdfff/")
+                                }
+                        )
+                        Text(
+                            text = "PDF Converter",
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Normal,
+                            modifier = Modifier.padding(top = 8.dp),
+                            color = Color.Black
+                        )
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 2.dp, bottom = 12.dp, end = 12.dp)
+                            .height(110.dp)
+                            .width(110.dp)
+                            .shadow(5.dp, shape = RoundedCornerShape(18.dp))
+                            .background(
+                                color = Color.White,
+                                shape = RoundedCornerShape(18.dp)
+                            ),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.finnav),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(top = 10.dp, bottom = 1.dp)
+                                .height(60.dp)
+                                .width(60.dp)
+                                .clickable {
+                                    navController.navigate(Screen.navfinal.route)
+                                }
+
+                        )
+                        Text(
+                            text = "Navigation",
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Normal,
+                            modifier = Modifier.padding(top = 8.dp),
+                            color = Color.Black
+                        )
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 2.dp, bottom = 12.dp, end = 12.dp)
+                            .height(110.dp)
+                            .width(110.dp)
+                            .shadow(5.dp, shape = RoundedCornerShape(18.dp))
+                            .background(
+                                color = Color.White,
+                                shape = RoundedCornerShape(18.dp)
+                            ),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    )  {
+                        Image(
+                            painter = painterResource(id = R.drawable.finfee),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(top = 10.dp, bottom = 1.dp)
+                                .height(60.dp)
+                                .width(60.dp)
+                                .clickable {
+                                    navController.navigate(Screen.feedback.route)
+                                }
+
+                        )
+                        Text(
+                            text = "Fee Payment",
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Normal,
+                            modifier = Modifier.padding(top = 8.dp),
+                            color = Color.Black
+                        )
+                    }
+
+                    /*
                     Image(
                         painter = painterResource(id = R.drawable.newnav2),
                         contentDescription = null,
                         modifier = Modifier
-                            .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
+                            .padding(top = 0.dp, bottom = 0.dp, start = 30.dp)
                             .height(30.dp)
                             .width(30.dp)
                             .weight(0.2f)
                             .clickable {
                                 navController.navigate(Screen.navfinal.route)
                             }
-                            .clip(RoundedCornerShape(50.dp)
-                                )
+                            .clip(
+                                RoundedCornerShape(50.dp)
+                            )
                     )
                     Text(text = "Navigation",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = homefont,
                         letterSpacing = 2.5.sp,
-                        modifier = Modifier.padding(top = 0.dp, start = 20.dp)
+                        modifier = Modifier
+                            .padding(top = 0.dp, start = 20.dp)
                             .weight(0.8f)
                             .clickable {
                                 navController.navigate(Screen.navfinal.route)
                             },
                         color = Color(0xFF2A3942)
-                    )
+                    )*/
 
 
                 }
 
                    Row(
                        modifier = Modifier
-                           .height(60.dp)
+                           .height(70.dp)
                            .width(800.dp)
-                           .padding(10.dp),
+                           .padding(start=20.dp, top=10.dp),
                        horizontalArrangement = Arrangement.SpaceAround,
                        verticalAlignment = Alignment.CenterVertically
                    ) {
                        Image(
-                           painter = painterResource(id = R.drawable.pdfcon2),
+                           painter = painterResource(id = R.drawable.finlog),
                            contentDescription = null,
                            modifier = Modifier
-                               .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
+                               .padding(top = 0.dp, bottom = 0.dp, start = 100.dp)
                                .height(40.dp)
                                .width(40.dp)
-                               .weight(0.2f)
-                               .clickable {
-                                   navController.navigate(Screen.Pdfscr.route)
-                               }
-                               .clip(RoundedCornerShape(50.dp)
+
+                               .clip(
+                                   RoundedCornerShape(50.dp)
                                )
                        )
-                       val handler = LocalUriHandler.current
-                       Text(text = "PDF Converter",
-                           fontSize = 20.sp,
-                           fontWeight = FontWeight.Bold,
-                           fontFamily = homefont,
-                           letterSpacing = 2.5.sp,
-                           modifier = Modifier.padding(top = 0.dp, start = 20.dp)
-                               .clickable {
-                                   handler.openUri("https://shelar1423.github.io/pdfff/")
-                               }
-                               .weight(0.8f),
-                           color = Color(0xFF2A3942)
-                       )
-
-
-                   }
-                   Row(
-                       modifier = Modifier
-                           .height(60.dp)
-                           .width(800.dp)
-                           .padding(10.dp),
-                       horizontalArrangement = Arrangement.SpaceAround,
-                       verticalAlignment = Alignment.CenterVertically
-                   ) {
-                       Image(
-                           painter = painterResource(id = R.drawable.feenew2),
-                           contentDescription = null,
-                           modifier = Modifier
-                               .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
-                               .height(40.dp)
-                               .width(40.dp)
-                               .weight(0.2f)
-                               .clickable {
-                                   navController.navigate(Screen.payment.route)
-                               }
-                               .clip(RoundedCornerShape(50.dp)
-                               )
-                       )
-                       Text(text = "Fee Payment",
-                           fontSize = 20.sp,
-                           fontWeight = FontWeight.Bold,
-                           fontFamily = homefont,
-                           letterSpacing = 2.5.sp,
-                           modifier = Modifier.padding(top = 0.dp, start = 20.dp)
-                               .weight(0.8f)
-                               .clickable {
-                                   navController.navigate(Screen.payment.route)
-                               },
-                           color = Color(0xFF2A3942)
-                       )
-
-
-                   }
-                   Row(
-                       modifier = Modifier
-                           .height(60.dp)
-                           .width(800.dp)
-                           .padding(10.dp),
-                       horizontalArrangement = Arrangement.SpaceAround,
-                       verticalAlignment = Alignment.CenterVertically
-                   ) {
-                       Image(
-                           painter = painterResource(id = R.drawable.logoutnew2),
-                           contentDescription = null,
-                           modifier = Modifier
-                               .padding(top = 0.dp, bottom =0.dp, start = 30.dp)
-                               .height(40.dp)
-                               .width(40.dp)
-                               .weight(0.2f)
-                               .clip(RoundedCornerShape(50.dp)
-                               )
-                       )
-                       Text(text = "LogOut",
+                       Text(text = "LOGOUT",
                            fontSize = 20.sp,
                            fontWeight = FontWeight.Bold,
                            letterSpacing = 2.5.sp,
                            fontFamily = homefont,
-                           modifier = Modifier.padding(top = 0.dp, start = 20.dp)
+                           modifier = Modifier
+                               .padding(top = 0.dp, start = 20.dp)
                                .weight(0.8f)
                                .clickable {
                                    // Sign out logic...
-                                   FirebaseAuth.getInstance().signOut()
+                                   FirebaseAuth
+                                       .getInstance()
+                                       .signOut()
                                    // Navigate back to the registration screen
                                    navController.navigate(Screen.RegistrationScreen.route) {
                                        popUpTo(Screen.RegistrationScreen.route) {
