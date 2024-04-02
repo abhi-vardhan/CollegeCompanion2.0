@@ -44,6 +44,8 @@ import com.bhavansvivekananda.onboardingcompose.navigation.Screen
 import com.bhavansvivekananda.onboardingcompose.viewmodel.WelcomeViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 
 import android.app.DownloadManager
 import android.content.Context
@@ -52,11 +54,13 @@ import android.os.Environment
 import android.view.ViewGroup
 
 import android.webkit.WebViewClient
+import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
-
-
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 
 
 @Composable
@@ -109,6 +113,43 @@ fun Newhome(navController: NavHostController,
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.Start
                     ) {
+                        var userImageUrl by remember { mutableStateOf<String?>(null) }
+                        val context = LocalContext.current
+
+                        val googleSignInAccount = GoogleSignIn.getLastSignedInAccount(context)
+
+                        if (googleSignInAccount != null) {
+                            userImageUrl = googleSignInAccount.photoUrl.toString()
+                        }
+                        userImageUrl?.let { imageUrl ->
+                            Image(
+                                painter = // You can specify placeholder, error, transformations, etc. here
+                                rememberAsyncImagePainter(ImageRequest.Builder // Placeholder image while loading
+                                // Error image if loading fails
+                                    (LocalContext.current).data(data = imageUrl).apply(block = fun ImageRequest.Builder.() {
+                                    // You can specify placeholder, error, transformations, etc. here
+                                    placeholder(R.drawable.newuserlogo) // Placeholder image while loading
+                                    error(R.drawable.newuserlogo) // Error image if loading fails
+                                }).build()
+                                ),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .width(50.dp)
+                                    .height(50.dp)
+                                    .clickable { /* Handle click if necessary */ }
+                                    .clip(RoundedCornerShape(50.dp))
+                            )
+                        } ?: run {
+                            // If user image URL is not available, display a default image
+                            Image(
+                                painter = painterResource(id = R.drawable.newuserlogo),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .width(50.dp)
+                                    .height(50.dp)
+                                    .clickable { /* Handle click if necessary */ }
+                            )
+                        }/*
                         Image(painter = painterResource(id = R.drawable.newuserlogo),
                             contentDescription = null,
                             modifier = Modifier
@@ -116,7 +157,7 @@ fun Newhome(navController: NavHostController,
                                 .height(50.dp)
                                 .clickable { }
 
-                        )
+                        )*/
                         Spacer(modifier = Modifier.height(5.dp))
 
                         var user by remember { mutableStateOf(Firebase.auth.currentUser) }
