@@ -245,7 +245,7 @@ fun FAQScreen(navController: NavHostController,
                                 .height(60.dp)
                                 .width(60.dp)
                                 .clickable {
-                                    navController.navigate(Screen.feedback.route)
+                                    navController.navigate(Screen.payment.route)
                                 }
 
                         )
@@ -352,7 +352,7 @@ fun FAQScreen(navController: NavHostController,
      /*   FullScreenCard(bottomSheetExpanded = bottomSheetScaffoldState.isExpanded)*/
 
 
-        Newhome(navController=navController,webUrl = "https://shelar1423.github.io/to-do-listAPP/")
+        Newhome(navController=navController,webUrl = "")
 
 
 

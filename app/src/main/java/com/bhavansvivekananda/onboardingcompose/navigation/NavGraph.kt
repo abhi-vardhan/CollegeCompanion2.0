@@ -4,6 +4,7 @@ package com.bhavansvivekananda.onboardingcompose.navigation
 
 
 import act
+import view360
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
@@ -47,6 +48,9 @@ fun NavGraphBuilder.SetupNavGraph(
 
         composable(route = Screen.acad1.route) {
             act(navController = navController)
+        }
+        composable(route=Screen.tsixty.route){
+            view360(navController = navController)
         }
 
 

@@ -50,10 +50,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.view.ViewGroup
 
 import android.webkit.WebViewClient
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.ui.viewinterop.AndroidView
@@ -63,6 +66,7 @@ import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 
 
+@RequiresApi(Build.VERSION_CODES.ECLAIR_MR1)
 @Composable
 fun Newhome(navController: NavHostController,
                 welcomeViewModel: WelcomeViewModel = hiltViewModel(),webUrl: String
@@ -206,14 +210,15 @@ fun Newhome(navController: NavHostController,
                         .padding(top = 14.dp, start = 24.dp, end = 24.dp)
 
                         .background(
-                            color =  Color(0xFFF7FBFF)
+                            color = Color(0xFFF7FBFF)
                         )
 
 
                 ) {
                     Column(
                         modifier = Modifier
-                            .padding(top = 12.dp, bottom = 12.dp, end = 12.dp)
+
+
                             .height(110.dp)
                             .width(110.dp)
                             .shadow(5.dp, shape = RoundedCornerShape(18.dp))
@@ -227,9 +232,9 @@ fun Newhome(navController: NavHostController,
                             painter = painterResource(id = R.drawable.finacad),
                             contentDescription = null,
                             Modifier
-                                .padding(top = 0.dp, bottom = 7.dp)
-                                .height(70.dp)
-                                .width(70.dp)
+                                .padding(top = 10.dp, bottom = 7.dp)
+                                .height(60.dp)
+                                .width(60.dp)
                                 .clickable {
                                     navController.navigate(Screen.acad1.route)
                                 }
@@ -249,7 +254,7 @@ fun Newhome(navController: NavHostController,
                     }
                     Column(
                         modifier = Modifier
-                            .padding(top = 12.dp, bottom = 12.dp, end = 8.dp, start = 8.dp)
+                            .padding(10.dp)
                             .height(110.dp)
                             .width(110.dp)
                             .shadow(5.dp, shape = RoundedCornerShape(18.dp))
@@ -264,9 +269,9 @@ fun Newhome(navController: NavHostController,
                             painter = painterResource(id = R.drawable.finweb),
                             contentDescription = null,
                             Modifier
-                                .padding(top = 0.dp, bottom = 7.dp)
-                                .height(70.dp)
-                                .width(70.dp)
+                                .padding(top = 10.dp, bottom = 7.dp)
+                                .height(60.dp)
+                                .width(60.dp)
                                 .clickable {
                                     handler.openUri("https://www.bhavansvc.ac.in/")
                                 }
@@ -285,9 +290,9 @@ fun Newhome(navController: NavHostController,
                     }
                     Column(
                         modifier = Modifier
-                            .padding(top = 12.dp, bottom = 12.dp, start = 8.dp)
+
                             .height(110.dp)
-                            .width(110.dp)
+                            .width(150.dp)
                             .shadow(5.dp, shape = RoundedCornerShape(18.dp))
                             .background(
                                 color = Color.White,
@@ -299,9 +304,9 @@ fun Newhome(navController: NavHostController,
                             painter = painterResource(id = R.drawable.finpaper),
                             contentDescription = null,
                             Modifier
-                                .padding(top = 0.dp, bottom = 7.dp)
-                                .height(70.dp)
-                                .width(70.dp)
+                                .padding(top = 10.dp, bottom = 7.dp)
+                                .height(60.dp)
+                                .width(60.dp)
                                 .clickable {
                                     navController.navigate(Screen.Papers.route)
                                 }
@@ -328,32 +333,29 @@ fun Newhome(navController: NavHostController,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 375.dp, end = 24.dp, start = 24.dp)
-                    .shadow(3.dp, shape = RoundedCornerShape(25.dp))
-                    .height(185.dp)
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                Color(0xFF8B5BE0),
-                                Color(0xFFF3C744)
-                            )
-                        ), shape = RoundedCornerShape(25.dp)
-                    )
+
+
+
+                    .height(185.dp),
+
             )
             {
-                AndroidView(
-                    factory = { context ->
-                        WebView(context).apply {
-                            settings.javaScriptEnabled = true
-                            webViewClient = WebViewClient()
-                            loadUrl(webUrl)
-                            settings.javaScriptEnabled = true
-                            settings.loadWithOverviewMode = true;
-                            settings.useWideViewPort = true;
+
+                Image(
+                    painter = painterResource(id = R.drawable.tsixbanner),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth().fillMaxSize()
+
+
+
+                        .clickable {
+                            navController.navigate(Screen.tsixty.route)
+
 
                         }
-                    }
-                )
 
+
+                )
             }
 
             Row(
@@ -363,7 +365,7 @@ fun Newhome(navController: NavHostController,
                     .fillMaxWidth()
                     .padding(start = 18.dp, end = 2.dp, top = 540.dp, bottom = 2.dp)
                     .background(
-                       /* color =  Color(0xFFF7FBFF)*/
+                        /* color =  Color(0xFFF7FBFF)*/
                         color = Color.Transparent
                     )
 
