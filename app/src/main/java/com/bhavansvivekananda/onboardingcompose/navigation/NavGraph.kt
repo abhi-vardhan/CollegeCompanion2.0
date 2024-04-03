@@ -245,6 +245,11 @@ fun NavGraphBuilder.SetupNavGraph(
             feedback(navController=navController, url ="https://docs.google.com/forms/d/e/1FAIpQLSczQKr1wN2bkvTHM8Nex2FYd36bvAga7b2QMoFkyQ5MIV_W3w/viewform?usp=sf_link")
         }
 
+        composable(route = Screen.Mytodo.route)
+        {
+            mytodo(navController=navController, url ="https://abhi-vardhan.github.io/ToDo-List-App/")
+        }
+
 
         }
 

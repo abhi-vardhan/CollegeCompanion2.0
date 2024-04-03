@@ -97,6 +97,7 @@ object faq:Screen(route = "faq")
     object acad1 :Screen(route = "acad1")
 
     object tsixty :Screen(route = "tsixty")
+    object Mytodo :Screen(route = "Mytodo")
 
 
 }

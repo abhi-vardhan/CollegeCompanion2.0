@@ -89,7 +89,7 @@ fun FAQScreen(navController: NavHostController,
     var user by remember { mutableStateOf(Firebase.auth.currentUser) }
     var bottomSheetState by remember { mutableStateOf(BottomSheetState(BottomSheetValue.Collapsed)) }
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
-/*
+
     val swipeableState = rememberSwipeableState(0)
 
     val anchors = mapOf(0f to 0, -300f to 1) // Adjust -300f according to the width of your screen
@@ -108,7 +108,7 @@ fun FAQScreen(navController: NavHostController,
                 thresholds = { _, _ -> FractionalThreshold(0.5f) },
                 resistance = null
             )
-    ) {*/
+    ) {
 
     BottomSheetScaffold(
       /*  scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState),
@@ -358,15 +358,15 @@ fun FAQScreen(navController: NavHostController,
 
     }
 }
-    /*
+
 LaunchedEffect(swipeableState.isAnimationRunning) {
     if (!swipeableState.isAnimationRunning) {
         if (swipeableState.currentValue == 1) {
-           navController.navigate(Screen.Tbar.route)
+           navController.navigate(Screen.Mytodo.route)
         }
     }
 }
-}*/
+}
 
 
 @Composable
