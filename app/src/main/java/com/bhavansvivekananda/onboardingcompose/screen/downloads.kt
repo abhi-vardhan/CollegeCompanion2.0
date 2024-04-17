@@ -24,7 +24,7 @@ fun downloads(navController: NavHostController,
 ) {
 
     val package_name = "com.android.chrome"
-    val URL = "http://www.bvcexams.com/Examination%20Downloads.html"
+    val URL = "https://www.bvcexams.in/Examination%20Downloads.html"
     val activity = (context as? Activity)
     val builder = CustomTabsIntent.Builder()
     builder.setShowTitle(true)
