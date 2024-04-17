@@ -291,7 +291,7 @@ fun Gradienthallticket(
         Font(R.font.home))
 
     val context = LocalContext.current
-    val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse("http://www.bvcexams.com/Examination%20Downloads.html")) }
+    val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bvcexams.in/Examination%20Downloads.html")) }
     Button(
 
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
