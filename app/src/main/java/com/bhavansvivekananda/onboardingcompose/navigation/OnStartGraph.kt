@@ -6,7 +6,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.bhavansvivekananda.onboardingcompose.screen.Navigation
 import com.bhavansvivekananda.onboardingcompose.screen.RegistrationScreen
 import com.bhavansvivekananda.onboardingcompose.screen.SplashScreen
 import com.bhavansvivekananda.onboardingcompose.screen.WelcomeScreen
@@ -23,9 +22,7 @@ fun NavGraphBuilder.onStartGraph(
         route = Graph.ON_START_GRAPH,
         startDestination = Screen.SplashScreen.route
     ) {
-        composable(route = Screen.HomeScreen.route) {
-            Navigation(navController = navController)
-        }
+
         composable(route = Screen.SplashScreen.route) {
             SplashScreen(navController = navController, splashViewModel = splashViewModel)
         }

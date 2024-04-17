@@ -5,8 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.bhavansvivekananda.onboardingcompose.screen.HomeScreen
-import com.bhavansvivekananda.onboardingcompose.screen.Navigation
+
 import com.bhavansvivekananda.onboardingcompose.viewmodel.SplashViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 
@@ -25,9 +24,7 @@ fun RootNavGraph(
     ) {
         SetupNavGraph(navController = navController)
         onStartGraph(navController = navController, splashViewModel = splashViewModel)
-        composable(route = Graph.BOTTOM_NAV_GRAPH) {
-            Navigation(navController = navController)
-        }
+
 
     }
 

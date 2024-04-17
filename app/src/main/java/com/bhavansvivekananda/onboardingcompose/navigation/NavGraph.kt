@@ -32,16 +32,11 @@ fun NavGraphBuilder.SetupNavGraph(
         composable(route = Screen.Welcome.route) {
             WelcomeScreen(navController = navController)
         }
-        composable(route = Screen.HomeScreen.route) {
-            val name = it.arguments?.getString("name")
-            HomeScreen(navController = navController, name = name)
-        }
+
         composable(route = Screen.Papers.route) {
             exam(navController = navController)
         }
-        composable(route = Screen.Todo.route) {
-            Todo(navController = navController)
-        }
+
         composable(route = Screen.Tbar.route) {
             TodoActivity()
         }
@@ -62,17 +57,9 @@ fun NavGraphBuilder.SetupNavGraph(
         {
             antirag(navController = navController)
         }
-        composable(route = Screen.commerce.route){
-            WebViewPage(navController = navController, url = "https://www.google.com/maps/place/CommerceBlockBVC,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana+500094/data=!4m2!3m1!1s0x3bcb9b102ac29611:0xf3f87c17db4e78e2?sa=X&ved=2ahUKEwivi7e7-dD7AhWU1jgGHYyaDZkQ8gF6BAgUEAE")
-        }
-        composable(route = Screen.it.route)
-        {
-          it(navController=navController, url ="https://www.google.com/maps/place/IT+block/@17.4894723,78.5349013,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb9bde49a8c001:0x71aa806707fc2879!8m2!3d17.4894723!4d78.5349013?hl=en-IN")
-        }
-        composable(route = Screen.mba.route)
-        {
-           mba(navController=navController, url ="https://www.google.com/maps/place/MBA+block/@17.4887849,78.5339989,90m/data=!3m1!1e3!4m22!1m16!4m15!1m6!1m2!1s0x3bcb9b102ac29611:0xf3f87c17db4e78e2!2sCommerceBlockBVC,+BHAVAN'S+VIVEKANANDA+COLLEGE,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana!2m2!1d78.5347303!2d17.4892123!1m6!1m2!1s0x3bcb9b0fcc30cadd:0x4c09f90816ab32d7!2sLibrary+Block+Bhavan's+vivekanada+college,+692,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana+500094!2m2!1d78.5345619!2d17.4881206!3e2!3m4!1s0x3bcb9b0fd89865f5:0x97bbfef9f60d690a!8m2!3d17.4889935!4d78.5338783")
-        }
+
+
+
         composable(route = Screen.itcom.route){
             itcom(navController = navController, url = "https://www.google.com/maps/@17.4895706,78.534892,3a,75y,322.98h,80.91t/data=!3m8!1e1!3m6!1sAF1QipOfWzQ6aK9I0qpUhNWd9y96MHMChRxxg9_pyN5F!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOfWzQ6aK9I0qpUhNWd9y96MHMChRxxg9_pyN5F%3Dw203-h100-k-no-pi-0-ya294.26694-ro0-fo100!7i10240!8i5120")
         }
@@ -172,18 +159,9 @@ fun NavGraphBuilder.SetupNavGraph(
         composable(route = Screen.devcon2.route){
             devcon2(navController = navController)
         }
-        composable(route = Screen.bio.route)
-        {
-            bio(navController=navController, url ="https://www.google.com/maps/place/BVC+Bio-Chemistry+Block(Bhavan's+vivekananda+college)/@17.4894289,78.5342312,103m/data=!3m1!1e3!4m23!1m17!4m16!1m3!2m2!1d78.534212!2d17.489389!1m6!1m2!1s0x3bcb9b102ac29611:0xf3f87c17db4e78e2!2sCommerceBlockBVC,+BHAVAN'S+VIVEKANANDA+COLLEGE,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana!2m2!1d78.5347303!2d17.4892123!1m3!2m2!1d78.5344166!2d17.4893294!3e2!3m4!1s0x3bcb9b01118e2fdb:0x712327daf6f357cd!8m2!3d17.4892746!4d78.5343893")
-        }
-        composable(route = Screen.science.route)
-        {
-            science(navController=navController, url ="https://www.google.com/maps/place/Science+Department,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana+500094/@17.4892872,78.5342693,103m/data=!3m1!1e3!4m18!1m12!4m11!1m3!2m2!1d78.534212!2d17.489389!1m6!1m2!1s0x3bcb9b102ac29611:0xf3f87c17db4e78e2!2sCommerceBlockBVC,+BHAVAN'S+VIVEKANANDA+COLLEGE,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana!2m2!1d78.5347303!2d17.4892123!3m4!1s0x3bcb9b1028b9d8a9:0x44950189f15ae74a!8m2!3d17.4893655!4d78.5342409")
-        }
-        composable(route = Screen.lib.route)
-        {
-            lib(navController=navController, url ="https://www.google.com/maps/place/Library+Block+Bhavan's+vivekanada+college/@17.48866,78.5344046,180m/data=!3m1!1e3!4m22!1m16!4m15!1m6!1m2!1s0x3bcb9b102ac29611:0xf3f87c17db4e78e2!2sCommerceBlockBVC,+BHAVAN'S+VIVEKANANDA+COLLEGE,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana!2m2!1d78.5347303!2d17.4892123!1m6!1m2!1s0x3bcb9b0fcc30cadd:0x4c09f90816ab32d7!2sLibrary+Block+Bhavan's+vivekanada+college,+692,+New+Kranthi+Nagar,+Sainikpuri,+Secunderabad,+Telangana+500094!2m2!1d78.5345619!2d17.4881206!3e2!3m4!1s0x3bcb9b0fcc30cadd:0x4c09f90816ab32d7!8m2!3d17.4881206!4d78.5345619")
-        }
+
+
+
         composable(route = Screen.result.route)
         {
             result(navController=navController, url ="https://www.bvcexams.in/Examination%20Results.html")
@@ -221,10 +199,6 @@ fun NavGraphBuilder.SetupNavGraph(
             navmid(navController = navController)
         }
 
-        composable(route = Screen.TabLayout.route)
-        {
-            TabLayout(navController = navController)
-        }
 
         composable(route = Screen.spnew.route)
         {
