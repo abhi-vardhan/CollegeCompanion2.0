@@ -188,6 +188,7 @@ fun Newhome(navController: NavHostController,
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
+
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(75.dp)
@@ -200,7 +201,11 @@ fun Newhome(navController: NavHostController,
 
 
                 ){
-
+                    Text(
+                        text = "Swipe right for TO-DO list ->",
+                        color = Color.Blue,
+                        fontSize = 20.sp
+                    )
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

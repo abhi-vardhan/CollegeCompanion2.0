@@ -62,7 +62,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.bhavansvivekananda.onboardingcompose.R
 import com.bhavansvivekananda.onboardingcompose.navigation.Screen
-import com.bhavansvivekananda.onboardingcompose.screen.todo.ui.TodoActivity
 import com.bhavansvivekananda.onboardingcompose.viewmodel.WelcomeViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth

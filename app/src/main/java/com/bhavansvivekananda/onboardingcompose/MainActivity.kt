@@ -17,7 +17,6 @@ import com.bhavansvivekananda.onboardingcompose.navigation.RootNavGraph
 import com.bhavansvivekananda.onboardingcompose.navigation.Screen
 import com.bhavansvivekananda.onboardingcompose.navigation.SetupNavGraph
 
-import com.bhavansvivekananda.onboardingcompose.screen.WelcomeScreen
 import com.bhavansvivekananda.onboardingcompose.ui.theme.OnBoardingComposeTheme
 import com.bhavansvivekananda.onboardingcompose.viewmodel.SplashViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi

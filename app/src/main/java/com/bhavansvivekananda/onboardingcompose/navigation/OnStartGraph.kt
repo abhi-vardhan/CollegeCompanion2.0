@@ -8,11 +8,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.bhavansvivekananda.onboardingcompose.screen.RegistrationScreen
 import com.bhavansvivekananda.onboardingcompose.screen.SplashScreen
-import com.bhavansvivekananda.onboardingcompose.screen.WelcomeScreen
 import com.bhavansvivekananda.onboardingcompose.viewmodel.SplashViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalPagerApi::class)
 fun NavGraphBuilder.onStartGraph(
     navController: NavHostController,
     splashViewModel: SplashViewModel

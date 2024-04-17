@@ -15,7 +15,6 @@ import androidx.navigation.navigation
 import com.bhavansvivekananda.onboardingcompose.screen.*
 import com.bhavansvivekananda.onboardingcompose.screen.homescreen.*
 import com.bhavansvivekananda.onboardingcompose.screen.quespaper.*
-import com.bhavansvivekananda.onboardingcompose.screen.todo.ui.TodoActivity
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -29,17 +28,13 @@ fun NavGraphBuilder.SetupNavGraph(
         startDestination = Screen.Welcome.route,
         route = Graph.NavGraph
     ) {
-        composable(route = Screen.Welcome.route) {
-            WelcomeScreen(navController = navController)
-        }
+
 
         composable(route = Screen.Papers.route) {
             exam(navController = navController)
         }
 
-        composable(route = Screen.Tbar.route) {
-            TodoActivity()
-        }
+
 
         composable(route = Screen.acad1.route) {
             act(navController = navController)
@@ -53,10 +48,7 @@ fun NavGraphBuilder.SetupNavGraph(
         {
             alumni(navController=navController, url ="https://alumni.bhavansvc.ac.in/")
         }
-        composable(route = Screen.antirag.route)
-        {
-            antirag(navController = navController)
-        }
+
 
 
 
@@ -156,9 +148,6 @@ fun NavGraphBuilder.SetupNavGraph(
             FAQScreen(navController = navController)
         }
 
-        composable(route = Screen.devcon2.route){
-            devcon2(navController = navController)
-        }
 
 
 
@@ -205,10 +194,7 @@ fun NavGraphBuilder.SetupNavGraph(
             NewSplash(navController = navController)
         }
 
-        composable(route = Screen.spnew.route)
-        {
-            TodoActivity()
-        }
+
 
         composable(route = Screen.Pdfscr.route)
         {
